@@ -110,19 +110,19 @@ RelatedCode:
 Status:
   en: Status
   fr: Statut
-CodeCreated:
+Created:
   en: Created
   fr: Créé
-CodeStarted:
+Started:
   en: Started
   fr: Lancé
-LastUpdatedCode:
+LastUpdated:
   en: Last updated
   fr: Dernière mise à jour
-LastModifiedCode:
+LastModified:
   en: Last modified
   fr: Dernière modification
-ContactPhoneCode:
+ContactPhone:
   en: Contact phone
   fr: Numéro du contact
 VersionControlSystemCode:
@@ -133,9 +133,9 @@ MandatoryField:
   fr: Obligatoire
 
 # Open Source Code (Schema and Form)
-SchemaVersionCode:
+SchemaVersion:
   en: ORE metadata schema version
-  fr: Version du schéma de métadonnées de l'ERO  
+  fr: Version du schéma de métadonnées de l'ERO
 SchemaVersionCodeDesc:
   en: The version of the ORE metadata schema for open source code. This is currently version 1.0.
   fr: La version du schéma de métadonnées ORE pour code soure ouvert. Il s'agit actuellement de la version 1.0.
@@ -149,34 +149,34 @@ RealeasesCodeDesc:
   en: Information for each project or source code published.
   fr: Informations pour chaque projet ou code source publié.
 
-ContactCodeDesc:
+ContactDesc:
   en: Contact information for the project.
   fr: Coordonnées des contacts pour le projet.
 
 URLContactName:
   en: URL
   fr: URL
-URLContactCodeDesc:
+URLContactDesc:
   en: English and French URLs that can be used to contact the project.
   fr: URLs en français et en anglais qui peuvent être utilisés pour contacter le projet.
-URLContactCodeEN:
+URLContactEN:
   en: English URL
   fr: URL anglais
-URLContactCodeFR:
+URLContactFR:
   en: French URL
   fr: URL français
 
-EmailContactCode:
+EmailContact:
   en: Email
   fr: Courriel
-EmailContactCodeDesc:
+EmailContactDesc:
   en: Email address to contact the project. It should be an email address of where a contact can be directly reached.
   fr: Une adresse courriel pour contacter le projet. Il devrait s'agir d'une adresse courriel à laquelle une personne-ressource peut être jointe directement.
 
-NameContactCode:
+NameContact:
   en: Name
   fr: Nom
-NameContactCodeDesc:
+NameContactDesc:
   en: The name of a contact for the project.
   fr: Le nom de la personne-ressource pour le projet.
 
@@ -187,7 +187,7 @@ PhoneContactCodeDesc:
   en: Phone number to contact the project.
   fr: Numéro de téléphone pour contacter le projet.
 
-DateCodeDesc:
+DateDesc:
   en: Dates describing the project.
   fr: Dates décrivant le projet.
 
@@ -207,13 +207,13 @@ MetaDataLastUpdatedCodeDesc:
 DescriptionName:
   en: Description
   fr: Description
-DescriptionCodeDesc:
+DescriptionDesc:
   en: A one or two sentence description of the project.
   fr: Une description en une ou deux phrases du projet.
-DescriptionCodeEN:
+DescriptionEN:
   en: English description
   fr: Description en anglais
-DescriptionCodeFR:
+DescriptionFR:
   en: French description
   fr: Description en francais
 
@@ -231,15 +231,15 @@ DownloadURLCodeFR:
   fr: URL de téléchargement en francais
 
 HomepageURLName:
-  en: Homepage URL  
+  en: Homepage URL
   fr: URL de la page d'accueil
-HomepageURLCodeDesc:
+HomepageURLDesc:
   en: The English and French URLs of the project homepage.
   fr: Les URLs en français et en anglais de la page d'accueil.
-HomepageURLCodeEN:
+HomepageURLEN:
   en: English homepage URL
   fr: URL de la page d'accueil en anglais
-HomepageURLCodeFR:
+HomepageURLFR:
   en: French homepage URL
   fr: URL de la page d'accueil en francais
 
@@ -253,13 +253,13 @@ LanguagesCodeDesc:
 ProjectName:
   en: Name
   fr: Nom
-NameCodeDesc:
+NameDesc:
   en: The English and French name of the project.
   fr: Le nom du projet en français et en anglais.
-NameCodeEN:
+NameEN:
   en: English project name
   fr: Nom du projet en anglais
-NameCodeFR:
+NameFR:
   en: French project name
   fr: Nom du projet en français
 
@@ -313,27 +313,27 @@ NamePartnersCodeFR:
   en: French name of partner
   fr: Nom du partenaire en francais
 
-LicensesCodeDesc:
+LicensesDesc:
   en: Information about each licence for the project.
   fr: Renseignements sur chaque licence pour le projet.
 
 URLLicensesName:
   en: URL
   fr: URL
-URLLicensesCodeDesc:
+URLLicensesDesc:
   en: The English and French URLs of licence.
   fr: L'URL de la licence en français et en anglais.
-URLLicensesCodeDescEN:
+URLLicensesDescEN:
   en: English licence URL
   fr: URL de la licence en anglais
-URLLicensesCodeDescFR:
+URLLicensesDescFR:
   en: French licence URL
   fr: URL de la licence en francais
 
 SpdxIDLicencesName:
   en: SPDX License identifier 
   fr: Identifiant de licence SPDX 
-SpdxIDLicencesCodeDesc:
+SpdxIDLicencesDesc:
   en: The SPDX Licence identifier - See <a href="https://spdx.org/licenses/">List of licences</a>.
   fr: L'identifiant de licence SPDX - Consultez la <a href="https://spdx.org/licenses/">Liste des licences</a>.
 
@@ -350,20 +350,20 @@ RepositoryURLCodeFR:
   en: French repository URL
   fr: URL du dépôt en francais
 
-RelatedCodeDesc:
+RelatedDesc:
   en: Information about each library, framework, API or other related software used in this project.
   fr: Informations sur chaque bibliothèque, plate-forme, API ou autre logiciel connexe utilisé dans ce projet.
 
-URLRelatedCodeName:
+URLRelatedName:
   en: URL
   fr: URL
-URLRelatedCodeDesc:
+URLRelatedDesc:
   en: The english and french URLs of related software.
   fr: L'URL anglais et francais d'un logiciel connexe.
-URLRelatedCodeEN:
+URLRelatedEN:
   en: English URL of related software
   fr: URL anglais d'un logiciel connexe
-URLRelatedCodeFR:
+URLRelatedFR:
   en: French URL of related software
   fr: URL francais d'un logiciel connexe
 
@@ -373,24 +373,24 @@ RelatedCodeName:
 NameRelatedCodeDesc:
   en: The english and french name of related software.
   fr: Le nom d'un logiciel connexe en anglais et en francais.
-NameRelatedCodeEN:
+NameRelatedEN:
   en: Name of related software in english
   fr: Nom d'un logiciel connexe en anglais
-NameRelatedCodeFR:
+NameRelatedFR:
   en: Name of related software in french
   fr: Nom d'un logiciel connexe en francais
 
 StatusCodeName:
   en: Development status
   fr: Statut du développement
-StatusCodeDesc:
+StatusDesc:
   en: The development status of the project. Alpha, Beta, Maintained, Deprecated or Retired.
   fr: Le statut du développement du projet. Alpha, Beta, Maintenu, Obsolète ou Retraité.
 
 TagsName:
   en: Tags
   fr: Étiquettes
-TagsCodeDesc:
+TagsDesc:
   en: A useful set of keywords to distinguish the various projects.
   fr: Un ensemble de mots clés utiles pour distinguer les différents projets.
 TagsCodeEN:
@@ -432,12 +432,12 @@ FormSubmissionSuccess:
 SchemaVersionOssDesc:
   en: The version of the ORE metadata schema for open source software.
   fr: La version du schéma de métadonnées ORE pour les logiciels libres.
-NameUsesOss:
-  en: Name of the project activity
-  fr: Nom de l'activité du projet.
 DescriptionUsesOss:
   en: Description of the project activity
   fr: Description de l'activité du projet.
+NameUsesOss:
+  en: Name of the project activity
+  fr: Nom de l'activité du projet.
 NameUsesOssDesc:
   en: The domain name of the project activity.
   fr: Le nom du domaine de l'activité du projet.

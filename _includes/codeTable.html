@@ -161,7 +161,7 @@
         <th>{{ site.Status[page.lang] }}</th>
         <th>Vcs</th>
         <th>Version</th> 
-        <th>{{ site.CodeCreated[page.lang] }}</th> 
+        <th>{{ site.Created[page.lang] }}</th> 
         <th>{{ site.MetadataLastUpdatedCode[page.lang] }}</th> 
       </tr>
     </thead>
@@ -306,15 +306,15 @@
         {% if release.version != nil %}
           <p>Version: {{ release.version }}</p>
         {% endif %}
-        <p>{{ site.CodeCreated[page.lang] }}: {{ release.date.created }}</p>
-        <p>{{ site.LastUpdatedCode[page.lang] }}: {{ release.date.metadataLastUpdated }}</p>
+        <p>{{ site.Created[page.lang] }}: {{ release.date.created }}</p>
+        <p>{{ site.LastUpdated[page.lang] }}: {{ release.date.metadataLastUpdated }}</p>
 
         <h3>Contact</h3>
         {% if release.contact.name != nil %}
           <p>{{ release.contact.name }}</p>
         {% endif %}
         {% if release.contact.phone != nil %}
-          <p>{{ site.ContactPhoneCode[page.lang] }}: {{ release.contact.phone }}</p>
+          <p>{{ site.ContactPhone[page.lang] }}: {{ release.contact.phone }}</p>
         {% endif %}
         {% if release.contact.email != nil %}
           <p><a href="mailto:{{ release.contact.email }}" target="_blank">{{ release.contact.email }}</a></p>
