@@ -1,0 +1,167 @@
+<div class="wb-frmvld">
+  <form action="#" method="get" id="validation">
+    <h2>{{ site.SchemaVersionOssDesc[page.lang] }}</h2>
+      <div class="form-group">
+        <label for="schemaVersion" class="required">{{ site.SchemaVersion[page.lang] }}</label>
+        <input class="form-control" id="schemaVersion" name="schemaVersion" type="text" readonly="readonly" required="required" value="1.0">
+      </div>
+
+    <h2>{{ site.DescriptionDesc[page.lang] }}</h2>
+      <div class="form-group">
+        <label for="enDescription" class="required">{{ site.DescriptionEN[page.lang] }} <strong class="required">({{ site.MandatoryField[page.lang] }})</strong></label>
+        <input class="form-control" id="enDescription" name="enDescription" type="text" pattern="[A-Za-z\s]" data-rule-lettersonly="true" required="required"/>
+      </div>
+      <div class="form-group">
+        <label for="frDescription" class="required">{{ site.DescriptionFR[page.lang] }} <strong class="required">({{ site.MandatoryField[page.lang] }})</strong></label>
+        <input class="form-control" id="frDescription" name="frDescription" type="text" pattern="[A-Za-z\s]" data-rule-lettersonly="true" required="required"/>
+      </div>
+
+    <h2>{{ site.HomepageURLDesc[page.lang] }}</h2>
+      <div class="form-group">
+        <label for="enHomepageURL">{{ site.HomepageURLEN[page.lang] }}</label>
+        <input class="form-control" id="enHomepageURL" name="homepageURL" type="url"/>
+      </div>
+      <div class="form-group">
+        <label for="frHomepageURL">{{ site.HomepageURLFR[page.lang] }}</label>
+        <input class="form-control" id="frHomepageURL" name="homepageURL" type="url"/>
+      </div>
+
+    <h2>{{ site.LicensesDesc[page.lang] }}</h2>
+      <div class="form-group">
+        <label for="enUrlLicense" class="required" >{{ site.URLLicensesDescEN[page.lang] }} <strong class="required">({{ site.MandatoryField[page.lang] }})</strong></label>
+        <input class="form-control" id="enUrlLicense" name="enUrlLicense" type="url" required="required"/>
+      </div>
+      <div class="form-group">
+        <label for="frUrlLicense" class="required">{{ site.URLLicensesDescFR[page.lang] }} <strong class="required">({{ site.MandatoryField[page.lang] }})</strong></label>
+        <input class="form-control" id="frUrlLicense" name="frUrlLicense" type="url" required="required"/>
+      </div>
+      <div class="form-group">
+        <label for="spdxID" class="required" >{{ site.SpdxIDLicencesDesc[page.lang] }} <strong class="required">({{ site.MandatoryField[page.lang] }})</strong></label>
+        <input class="form-control" id="spdxID" name="spdxID" type="text"  required="required"/>
+      </div>
+
+    <h2>{{ site.NameDesc[page.lang] }}</h2>
+      <div class="form-group">
+        <label for="enProjectName" class="required">{{ site.NameEN[page.lang] }} <strong class="required">({{ site.MandatoryField[page.lang] }})</strong></label>
+        <input class="form-control" id="enProjectName" name="enProjectName" type="text" pattern="[A-Za-z\s]" data-rule-lettersonly="true" required="required"/>
+      </div>
+      <div class="form-group">
+        <label for="frProjectName" class="required">{{ site.NameFR[page.lang] }} <strong class="required">({{ site.MandatoryField[page.lang] }})</strong></label>
+        <input class="form-control" id="frProjectName" name="frProjectName" type="text" pattern="[A-Za-z\s]" data-rule-lettersonly="true" required="required"/>
+      </div>
+
+    <h2>{{ site.TagsDesc[page.lang] }}</h2>
+      <div id="tags">
+        <div id="tagsEN" class="form-group"></div>
+        <div id="tagsFR" class="form-group"></div>
+      </div>
+
+    <h2>{{ site.AdminCodeDesc[page.lang] }}</h2>
+      <div class="form-group">
+        <label for="admin" class="required">{{ site.AdminCode[page.lang] }} <strong class="required">({{ site.MandatoryField[page.lang] }})</strong></label>
+        <select class="form-control" id="admin" name="admin" required="required">
+          <option value="">&nbsp;</option>
+          <optgroup label="Federal">
+            {% for org in site.data.administrations.federal %}
+              {% if org.name[page.lang] != nil %}
+                <option value="{{ org.Code }}">{{ org.name[page.lang] }}</option>
+              {% endif %}
+            {% endfor %}
+          </optgroup>
+          <optgroup label="Provincial">
+            {% for org in site.data.administrations.provincial %}
+              {% if org.name[page.lang] != nil %}
+                <option value="{{ org.Code }}">{{ org.name[page.lang] }}</option>
+              {% endif %}
+            {% endfor %}
+          </optgroup>
+          <optgroup label="Municipal">
+            {% for org in site.data.administrations.municipal %}
+              {% if org.name[page.lang] != nil %}
+                <option value="{{ org.Code }}">{{ org.name[page.lang] }}</option>
+              {% endif %}
+            {% endfor %}
+          </optgroup>
+        </select>
+      </div>
+
+    <h2>{{ site.ContactDesc[page.lang] }}</h2>
+      <div class="form-group">
+        <label for="enUrlContact">{{ site.URLContactEN[page.lang] }}</label>
+        <input class="form-control" id="enUrlContact" name="enUrlContact" type="url"/>
+      </div>
+      <div class="form-group">
+        <label for="frUrlContact">{{ site.URLContactFR[page.lang] }}</label>
+        <input class="form-control" id="frUrlContact" name="frUrlContact" type="url"/>
+      </div>
+      <div class="form-group">
+        <label for="emailContact" class="required" > {{ site.EmailContact[page.lang] }} <strong class="required">({{ site.MandatoryField[page.lang] }})</strong></label>
+        <input class="form-control" id="emailContact" name="emailContact" type="email" required="required" />
+      </div>
+      <div class="form-group">
+        <label for="nameContact">{{ site.NameContact[page.lang] }}</label>
+        <input class="form-control" id="nameContact" name="nameContact" type="text" pattern="[A-Za-z\s]" data-rule-lettersonly="true" />
+      </div>
+          <div class="form-group">
+        <label for="phone">{{ site.ContactPhone[page.lang] }}</label>
+        <input class="form-control" id="phone" name="phone" type="tel" data-rule-phoneUS="true" />
+      </div>
+
+    <h2>{{ site.DateDesc[page.lang] }}</h2>
+      <div class="form-group">
+        <label for="dateCreated" class="required">{{ site.Started[page.lang] }} <strong class="required">({{ site.MandatoryField[page.lang] }})</strong><span class="datepicker-format"> (YYYY-MM-DD)</span></label>
+        <input class="form-control" id="dateCreated" name="dateCreated" type="date" data-rule-dateISO="true" required="required" />
+      </div>
+      <div class="form-group">
+        <label for="dateLastUpdated" class="required">{{ site.LastUpdated[page.lang] }} <strong class="required">({{ site.MandatoryField[page.lang] }})</strong><span class="datepicker-format"> (YYYY-MM-DD)</span></label>
+        <input class="form-control" id="dateLastUpdated" name="dateLastUpdated" type="date" data-rule-dateISO="true" required="required"/>
+      </div>
+
+    <h2>{{ site.RelatedDesc[page.lang] }}</h2>
+      <div class="form-group">
+        <label for="enUrlRelated">{{ site.URLRelatedEN[page.lang] }}</label>
+        <input class="form-control" id="enUrlRelated" name="enUrlRelated" type="url"/>
+      </div>
+      <div class="form-group">
+        <label for="frUrlRelated">{{ site.URLRelatedFR[page.lang] }}</label>
+        <input class="form-control" id="frUrlRelated" name="urlRelated" type="url"/>
+      </div>
+      <div class="form-group">
+        <label for="enNameRelated">{{ site.NameRelatedEN[page.lang] }}</label>
+        <input class="form-control" id="enNameRelated" name="enNameRelated" type="text" pattern="[A-Za-z\s]" data-rule-lettersonly="true"/>
+      </div>
+      <div class="form-group">
+        <label for="frNameRelated">{{ site.NameRelatedFR[page.lang] }}</label>
+        <input class="form-control" id="frNameRelated" name="enNameRelated" type="text" pattern="[A-Za-z\s]" data-rule-lettersonly="true"/>
+      </div>
+
+    <h2>{{ site.StatusDesc[page.lang] }}</h2>
+      <div class="form-group">
+        <label for="status">{{ site.StatusName[page.lang] }}</label>
+        <select class="form-control" id="status" name="status">
+          <option value="">&nbsp;</option>
+          <option value="Alpha">Alpha</option>
+          <option value="Beta">Beta</option>
+          <option value="Maintained">{{ site.MaitainedStatus[page.lang] }}</option>
+          <option value="Deprecated">{{ site.DeprecatedStatus[page.lang] }}</option>
+          <option value="Retired">{{ site.RetiredStatus[page.lang] }}</option>
+        </select>
+      </div>
+
+    <button id="prbotSubmit" type="button" class="btn btn-primary">Submit</button>
+    <button id="codeFormReset" type="reset" class="btn btn-default">Reset</button>
+
+    <div style="margin-top: 10px">
+      <div id="prbotSubmitAlertInProgress" class="alert alert-warning" style="display: none">
+        <b>{{ site.FormSubmissionInProgress[page.lang]}}</b>
+      </div>
+      <div id="prbotSubmitAlertFail" class="alert alert-danger" style="display: none">
+        <b>{{ site.FormSubmissionFail[page.lang]}}</b>
+      </div>
+      <div id="prbotSubmitAlertSuccess" class="alert alert-success" style="display: none">
+        <b>{{ site.FormSubmissionSuccess[page.lang]}}</b>
+      </div>
+    </div>
+
+  </form>
+</div>
