@@ -142,6 +142,12 @@ SchemaVersionCodeDesc:
 AdminCode:
   en: Administration code
   fr: Code d'administration
+AdminCodeEN:
+  en: English administration code
+  fr: Code d'administration en anglais
+AdminCodeFR:
+  en: French administration code
+  fr: Code d'administration en francais
 AdminCodeDesc:
   en: The code for the Canadian public administration. See the <a href="https://github.com/canada-ca/ore-ero/tree/master/_data/administrations">data files</a> to find your administration.
   fr: Le code de l'administration publique Canadienne. Consultez les <a href="https://github.com/canada-ca/ore-ero/tree/master/_data/administrations">fichier de données</a> pour trouver votre administration.
