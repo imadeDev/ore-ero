@@ -58,8 +58,8 @@ function toggleAlert(option) {
   }
 }
 
-function submitForm() {
-  let submitButton = document.getElementById('prbotSubmit');
+function submitFormOSC() {
+  let submitButton = document.getElementById('prbotSubmitOSC');
   let resetButton = document.getElementById('codeFormReset');
   submitButton.disabled = true;
   resetButton.disabled = true;
@@ -194,12 +194,159 @@ ${[...document.querySelectorAll('#tagsFR input')]
     });
 }
 
-$('#prbotSubmit').click(function() {
+function submitFormOSS() {
+  let submitButton = document.getElementById('prbotSubmitOSS');
+  let resetButton = document.getElementById('softwareFormReset');
+  submitButton.disabled = true;
+  resetButton.disabled = true;
+  let content =
+    '' +
+    `---
+schemaVersion: "1.0"
+description:
+  en: ${$('#enDescription').val()}
+  fr: ${$('#frDescription').val()}
+homepageURL:
+  en: ${$('#enHomepageURL').val()}
+  fr: ${$('#frHomepageURL').val()}
+licenses:
+  -
+    URL:
+      en: ${$('#enUrlLicense').val()}
+      fr: ${$('#frUrlLicense').val()}
+      spdxID: ${$('#spdxID').val()}
+name:
+  en: ${$('#enProjectName').val()}
+  fr: ${$('#frProjectName').val()}
+tags:
+  en:
+${[...document.querySelectorAll('#tagsEN input')]
+  .map(child => child.value)
+  .map(tag => '        - "' + tag + '"')
+  .join('\n')}
+  fr:
+${[...document.querySelectorAll('#tagsFR input')]
+  .map(child => child.value)
+  .map(tag => '        - "' + tag + '"')
+  .join('\n')}
+admininstrations:
+  -
+    adminCode: ${$('#adminCode').val()}
+    uses:
+      -
+        contact:
+          URL:
+            en: ${$('#enUrlContact').val()}
+            fr: ${$('#frUrlContact').val()}
+            email: ${$('#emailContact').val()}
+        date:
+          started: ${$('#dateCreated').val()}
+          metadataLastUpdated: ${$('#dateLastUpdated').val()}
+        name:
+          en: ${$('#nameContact').val()}
+          phone: ${$('#phoneContact').val()}
+`;
+  let file = `_data/software/${getSelectedOrgType()}/${$('#adminCode').val()}/${$('#enProjectName').val()}.yml`;
+  const config = {
+    body: JSON.stringify({
+      user: USERNAME,
+      repo: REPO_NAME,
+      title: 'Added software for ' + $('#adminCode :selected').text(),
+      description:
+        'Authored by: ' + $('#submitterEmail').val() + '\n' +
+        'Project: ***' + $('#enProjectName').val() + '***\n' +
+        $('#enDescription').val() + '\n',
+      commit: 'Commited bt ' + $('#submitterEmail').val(),
+      author: {
+        name: $('#submitterUsername').val(),
+        email: $('#submitterEmail').val()
+      },
+      files: [
+        {
+          path: file,
+          content: YAML.stringify(content, {keepBlobsInJSON: false })
+        }
+      ]
+    }),
+    method: 'POST'
+  };
+  console.log(PRBOT_URL, config);
+  //return fetch(PRBOT_URL, config);
+    /*
+    .catch(err => {
+      if (err.status == 404) {
+        // We need to create the file for this organization, as it doesn't yet exist.
+        let header = `schemaVersion: "1.0"\nadminCode: ${$(
+          '#adminCode'
+        ).val()}\n`;
+        const config = {
+          body: JSON.stringify({
+            user: USERNAME,
+            repo: REPO_NAME,
+            title: 'Created code file for ' + $('#adminCode :selected').text(),
+            description:
+              'Authored by: ' +
+              $('#submitterEmail').val() +
+              '\n' +
+              'Project: ***' +
+              $('#enProjectName').val() +
+              '***\n' +
+              $('#enDescription').val() +
+              '\n',
+            commit: 'Committed by ' + $('#submitterEmail').val(),
+            author: {
+              name: $('#submitterUsername').val(),
+              email: $('#submitterEmail').val()
+            },
+            files: [
+              {
+                path: file,
+                content: header + content
+              }
+            ]
+          }),
+          method: 'POST'
+        };
+        return fetch(PRBOT_URL, config);
+      } else {
+        throw err;
+      }
+    })
+    .then(response => {
+      if (response.status != 200) {
+        toggleAlert(ALERT_OFF);
+        toggleAlert(ALERT_FAIL);
+        submitButton.disabled = false;
+        resetButton.disabled = false;
+      } else {
+        toggleAlert(ALERT_OFF);
+        toggleAlert(ALERT_SUCCESS);
+        // Redirect to home page
+        setTimeout(function() {
+          window.location.href = './index.html';
+        }, 2000);
+      }
+    });*/
+}
+
+$('#prbotSubmitOSC').click(function() {
   // Progress only when form input is valid
   if (validateRequired()) {
-    toggleAlert(ALERT_OFF);
-    toggleAlert(ALERT_IN_PROGRESS);
-    window.scrollTo(0, document.body.scrollHeight);
-    submitForm();
+    toggleAlerts()
+    submitFormOSC();
   }
 });
+
+$('#prbotSubmitOSS').click(function() {
+  // Progress only when form input is valid
+  if (validateRequired()) {
+    toggleAlerts()
+    submitFormOSS();
+  }
+});
+
+function toggleAlerts() {
+  toggleAlert(ALERT_OFF);
+  toggleAlert(ALERT_IN_PROGRESS);
+  window.scrollTo(0, document.body.scrollHeight);
+}
