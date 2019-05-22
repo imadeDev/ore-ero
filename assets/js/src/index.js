@@ -59,10 +59,10 @@ function toggleAlert(option) {
 }
 
 function submitFormOSC() {
-  let submitButton = document.getElementById('prbotSubmitOSC');
+  /*let submitButton = document.getElementById('prbotSubmitOSC');
   let resetButton = document.getElementById('codeFormReset');
   submitButton.disabled = true;
-  resetButton.disabled = true;
+  resetButton.disabled = true;*/
   let content =
     '' +
     `releases:
@@ -194,14 +194,15 @@ ${[...document.querySelectorAll('#tagsFR input')]
     });
 }
 
-/*function submitFormOSS() {
+function submitFormOSS() {
   let submitButton = document.getElementById('prbotSubmitOSS');
   let resetButton = document.getElementById('softwareFormReset');
   submitButton.disabled = true;
   resetButton.disabled = true;
   let content =
     '' +
-    `admininstrations:
+    `
+admininstrations:
   -
     adminCode: ${$('#adminCode').val()}
     uses:
@@ -322,7 +323,7 @@ ${[...document.querySelectorAll('#tagsFR input')]
         }, 2000);
       }
     });
-}*/
+}
 
 $('#prbotSubmitOSC').click(function() {
   // Progress only when form input is valid
