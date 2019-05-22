@@ -194,7 +194,7 @@ ${[...document.querySelectorAll('#tagsFR input')]
     });
 }
 
-function submitFormOSS() {
+/*function submitFormOSS() {
   let submitButton = document.getElementById('prbotSubmitOSS');
   let resetButton = document.getElementById('softwareFormReset');
   submitButton.disabled = true;
@@ -247,7 +247,8 @@ admininstrations:
           phone: ${$('#phoneContact').val()}
 `;
   let file = `_data/software/${getSelectedOrgType()}/${$('#adminCode').val()}/${$('#enProjectName').val()}.yml`;
-  const config = {
+
+  fetch(PRBOT_URL, {
     body: JSON.stringify({
       user: USERNAME,
       repo: REPO_NAME,
@@ -269,65 +270,56 @@ admininstrations:
       ]
     }),
     method: 'POST'
-  };
-  console.log(PRBOT_URL, config);
-  //return fetch(PRBOT_URL, config);
-    /*
-    .catch(err => {
-      if (err.status == 404) {
-        // We need to create the file for this organization, as it doesn't yet exist.
-        let header = `schemaVersion: "1.0"\nadminCode: ${$(
-          '#adminCode'
-        ).val()}\n`;
-        const config = {
-          body: JSON.stringify({
-            user: USERNAME,
-            repo: REPO_NAME,
-            title: 'Created code file for ' + $('#adminCode :selected').text(),
-            description:
-              'Authored by: ' +
-              $('#submitterEmail').val() +
-              '\n' +
-              'Project: ***' +
-              $('#enProjectName').val() +
-              '***\n' +
-              $('#enDescription').val() +
-              '\n',
-            commit: 'Committed by ' + $('#submitterEmail').val(),
-            author: {
-              name: $('#submitterUsername').val(),
-              email: $('#submitterEmail').val()
-            },
-            files: [
-              {
-                path: file,
-                content: header + content
-              }
-            ]
-          }),
-          method: 'POST'
-        };
-        return fetch(PRBOT_URL, config);
-      } else {
-        throw err;
-      }
-    })
-    .then(response => {
-      if (response.status != 200) {
-        toggleAlert(ALERT_OFF);
-        toggleAlert(ALERT_FAIL);
-        submitButton.disabled = false;
-        resetButton.disabled = false;
-      } else {
-        toggleAlert(ALERT_OFF);
-        toggleAlert(ALERT_SUCCESS);
-        // Redirect to home page
-        setTimeout(function() {
-          window.location.href = './index.html';
-        }, 2000);
-      }
-    });*/
-}
+  })
+  .catch(err => {
+    if(err.status == 404) {
+      // We need to create the file for this organization, as it doesn't yet exist.
+      let header = `schemaVersion: "1.0"\nadminCode: ${$(
+        '#adminCode'
+      ).val()}\n`;
+      fetch(PRBOT_URL, {
+        body: JSON.stringify({
+          user: USERNAME,
+          repo: REPO_NAME,
+          title: 'Added software for ' + $('#adminCode :selected').text(),
+          description:
+            'Authored by: ' + $('#submitterEmail').val() + '\n' +
+            'Project: ***' + $('#enProjectName').val() + '***\n' +
+            $('#enDescription').val() + '\n',
+          commit: 'Commited bt ' + $('#submitterEmail').val(),
+          author: {
+            name: $('#submitterUsername').val(),
+            email: $('#submitterEmail').val()
+          },
+          files: [
+            {
+              path: file,
+              content: header + content
+            }
+          ]
+        }),
+        method: 'POST'
+      });
+    } else {
+      throw err;
+    }
+  })
+  .then(response => {
+    if (response.status != 200) {
+      toggleAlert(ALERT_OFF);
+      toggleAlert(ALERT_FAIL);
+      submitButton.disabled = false;
+      resetButton.disabled = false;
+    } else {
+      toggleAlert(ALERT_OFF);
+      toggleAlert(ALERT_SUCCESS);
+      // redirect to home page
+      setTimeout(function {
+        window.location.href = './index.html';
+      }, 2000);
+    }
+  });
+}*/
 
 $('#prbotSubmitOSC').click(function() {
   // Progress only when form input is valid
