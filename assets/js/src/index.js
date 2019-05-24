@@ -59,44 +59,44 @@ function toggleAlert(option) {
 }
 
 function submitFormOSC() {
-  /*let submitButton = document.getElementById('prbotSubmitOSC');
+  let submitButton = document.getElementById('prbotSubmitOSC');
   let resetButton = document.getElementById('codeFormReset');
   submitButton.disabled = true;
-  resetButton.disabled = true;*/
+  resetButton.disabled = true;
   let content =
     '' +
     `releases:
   -
-    contact: 
-      URL: 
+    contact:
+      URL:
         en: ${$('#enUrlContact').val()}
         fr: ${$('#frUrlContact').val()}
-    date: 
+    date:
       created: ${$('#dateCreated').val()}
       metadataLastUpdated: ${$('#dateLastUpdated').val()}
-    description: 
+    description:
       en: ${$('#enDescription').val()}
       fr: ${$('#frDescription').val()}
-    name: 
+    name:
       en: ${$('#enProjectName').val()}
       fr: ${$('#frProjectName').val()}
-    licenses: 
-      - 
-        URL: 
+    licenses:
+      -
+        URL:
           en: ${$('#enUrlLicense').val()}
           fr: ${$('#frUrlLicense').val()}
           spdxID: ${$('#spdxID').val()}
-    repositoryURL: 
+    repositoryURL:
       en: ${$('#enRepoUrl').val()}
       fr: ${$('#frRepoUrl').val()}
     status: ${$('#status :selected').text()}
-    tags: 
-      en: 
+    tags:
+      en:
 ${[...document.querySelectorAll('#tagsEN input')]
   .map(child => child.value)
   .map(tag => '        - "' + tag + '"')
   .join('\n')}
-      fr: 
+      fr:
 ${[...document.querySelectorAll('#tagsFR input')]
   .map(child => child.value)
   .map(tag => '        - "' + tag + '"')
@@ -211,18 +211,35 @@ admininstrations:
           URL:
             en: ${$('#enUrlContact').val()}
             fr: ${$('#frUrlContact').val()}
-            email: ${$('#emailContact').val()}
+          email: ${$('#emailContact').val()}
+          name: ${$('#nameContact').val()}
         date:
           started: ${$('#dateCreated').val()}
-          metadataLastUpdated: ${$('#dateLastUpdated').val()}
+          metadataLastUpdated: ${$('#dateMetadaLastUpdated').val()}
+        description:
+          en: ${$('useDescriptionEN').val()}
+          fr: ${$('useDescriptionFR').val()}
         name:
-          en: ${$('#nameContact').val()}
-          phone: ${$('#phoneContact').val()}
+          en: ${$('#enUseName').val()}
+          fr: ${$('#frUseName').val()}
+        relatedCode:
+          URL:
+            en: ${$('#enUrlRelated').val()}
+            fr: ${$('#frUrlRelated').val()}
+          name:
+            en: ${$('#enNameRelated').val()}
+            fr: ${$('#frNameRelated').val()}
+        status: ${$('#status').val()}
+        users:
+            - ${$('#users').val()}
 `;
+  // TODO: users needs to be treaded as an array
   let fileWriter = new YamlWriter(USERNAME, REPO_NAME);
-  let file = `_data/logiciels_libres-open_source_software/${$('#enProjectName').val()}.yml`;
+  let file = `_data/logiciels_libres-open_source_software/${$(
+    '#enProjectName'
+  ).val()}.yml`;
   fileWriter
-    .merge(file, content, 'admininstrations', 'name.en')
+    .merge(file, content, 'admininstrations', 'adminCode')
     .then(result => {
       const config = {
         body: JSON.stringify({
@@ -230,9 +247,14 @@ admininstrations:
           repo: REPO_NAME,
           title: 'Updated code for ' + $('#enProjectName').val(),
           description:
-            'Authored by: ' + $('#submitterEmail').val() + '\n' +
-            'Project: ***' + $('#enProjectName').val() + '***\n' +
-            $('#enDescription').val() + '\n',
+            'Authored by: ' +
+            $('#submitterEmail').val() +
+            '\n' +
+            'Project: ***' +
+            $('#enProjectName').val() +
+            '***\n' +
+            $('#enDescription').val() +
+            '\n',
           commit: 'Commited by ' + $('submitterEmail').val(),
           author: {
             name: $('submitterUsername').val(),
@@ -241,7 +263,7 @@ admininstrations:
           files: [
             {
               path: file,
-              content: YAML.stringify(result, {keepBlobsInJSON: false})
+              content: YAML.stringify(result, { keepBlobsInJSON: false })
             }
           ]
         }),
@@ -250,45 +272,50 @@ admininstrations:
       return fetch(PRBOT_URL, config);
     })
     .catch(err => {
-      if(err.status == 404) {
+      if (err.status == 404) {
         // We need to create the file for this project, as it doesn't yet exists.
         let header = `---
-          schemaVersion: "1.0"
-          description:
-            en: ${$('#enDescription').val()}
-            fr: ${$('#frDescription').val()}
-          homepageURL:
-            en: ${$('#enHomepageURL').val()}
-            fr: ${$('#frHomepageURL').val()}
-          licenses:
-            -
-              URL:
-                en: ${$('#enUrlLicense').val()}
-                fr: ${$('#frUrlLicense').val()}
-              spdxID: ${$('#spdxID').val()}
-          name:
-            en: ${$('#enProjectName').val()}
-            fr: ${$('#frProjectName').val()}
-          tags:
-            en:
-          ${[...document.querySelectorAll('#tagsEN input')]
-            .map(child => child.value)
-            .map(tag => '        - "' + tag + '"')
-            .join('\n')}
-            fr:
-          ${[...document.querySelectorAll('#tagsFR input')]
-            .map(child => child.value)
-            .map(tag => '        - "' + tag + '"')
-            .join('\n')}`;
+schemaVersion: ${$('#schemaVersion').val()}
+description:
+  en: ${$('#enDescription').val()}
+  fr: ${$('#frDescription').val()}
+homepageURL:
+  en: ${$('#enHomepageURL').val()}
+  fr: ${$('#frHomepageURL').val()}
+licenses:
+  -
+    URL:
+      en: ${$('#enUrlLicense').val()}
+      fr: ${$('#frUrlLicense').val()}
+    spdxID: ${$('#spdxID').val()}
+name:
+  en: ${$('#enProjectName').val()}
+  fr: ${$('#frProjectName').val()}
+tags:
+  en:
+${[...document.querySelectorAll('#tagsEN input')]
+  .map(child => child.value)
+  .map(tag => '    - "' + tag + '"')
+  .join('\n')}
+  fr:
+${[...document.querySelectorAll('#tagsFR input')]
+  .map(child => child.value)
+  .map(tag => '    - "' + tag + '"')
+  .join('\n')}`;
         const config = {
           body: JSON.stringify({
             user: USERNAME,
             repo: REPO_NAME,
             title: 'Created software file for ' + $('#enProjectName').val(),
             description:
-              'Authored by: ' + $('#submitterEmail').val() + '\n' +
-              'Project: ***' + $('#enProjectName').val() + '***\n' +
-              $('#enDescription').val() + '\n',
+              'Authored by: ' +
+              $('#submitterEmail').val() +
+              '\n' +
+              'Project: ***' +
+              $('#enProjectName').val() +
+              '***\n' +
+              $('#enDescription').val() +
+              '\n',
             commit: 'Committed by ' + $('#submitterEmail').val(),
             author: {
               name: $('#submitterUsername').val(),
@@ -328,7 +355,7 @@ admininstrations:
 $('#prbotSubmitOSC').click(function() {
   // Progress only when form input is valid
   if (validateRequired()) {
-    toggleAlerts()
+    toggleAlerts();
     submitFormOSC();
   }
 });
@@ -336,7 +363,7 @@ $('#prbotSubmitOSC').click(function() {
 $('#prbotSubmitOSS').click(function() {
   // Progress only when form input is valid
   if (validateRequired()) {
-    toggleAlerts()
+    toggleAlerts();
     submitFormOSS();
   }
 });

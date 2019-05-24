@@ -9,21 +9,21 @@
     <h2>{{ site.DescriptionDesc[page.lang] }}</h2>
       <div class="form-group">
         <label for="enDescription" class="required">{{ site.DescriptionEN[page.lang] }} <strong class="required">({{ site.MandatoryField[page.lang] }})</strong></label>
-        <input class="form-control" id="enDescription" name="enDescription" type="text" pattern="[A-Za-z\s]" data-rule-lettersonly="true" required="required"/>
+        <input class="form-control" id="enDescription" name="enDescription" type="text" pattern="[A-Za-z\s]" required="required"/>
       </div>
       <div class="form-group">
         <label for="frDescription" class="required">{{ site.DescriptionFR[page.lang] }} <strong class="required">({{ site.MandatoryField[page.lang] }})</strong></label>
-        <input class="form-control" id="frDescription" name="frDescription" type="text" pattern="[A-Za-z\s]" data-rule-lettersonly="true" required="required"/>
+        <input class="form-control" id="frDescription" name="frDescription" type="text" pattern="[A-Za-z\s]" required="required"/>
       </div>
 
     <h2>{{ site.HomepageURLDesc[page.lang] }}</h2>
       <div class="form-group">
-        <label for="enHomepageURL">{{ site.HomepageURLEN[page.lang] }}</label>
-        <input class="form-control" id="enHomepageURL" name="homepageURL" type="url"/>
+        <label for="enHomepageURL" class="required">{{ site.HomepageURLEN[page.lang] }} <strong class="required">({{ site.MandatoryField[page.lang] }})</strong></label>
+        <input class="form-control" id="enHomepageURL" name="homepageURL" type="url" required="required" />
       </div>
       <div class="form-group">
-        <label for="frHomepageURL">{{ site.HomepageURLFR[page.lang] }}</label>
-        <input class="form-control" id="frHomepageURL" name="homepageURL" type="url"/>
+        <label for="frHomepageURL" class="required">{{ site.HomepageURLFR[page.lang] }} <strong class="required">({{ site.MandatoryField[page.lang] }})</strong></label>
+        <input class="form-control" id="frHomepageURL" name="homepageURL" type="url" required="required" />
       </div>
 
     <h2>{{ site.LicensesDesc[page.lang] }}</h2>
@@ -43,17 +43,29 @@
     <h2>{{ site.NameDesc[page.lang] }}</h2>
       <div class="form-group">
         <label for="enProjectName" class="required">{{ site.NameEN[page.lang] }} <strong class="required">({{ site.MandatoryField[page.lang] }})</strong></label>
-        <input class="form-control" id="enProjectName" name="enProjectName" type="text" pattern="[A-Za-z\s]" data-rule-lettersonly="true" required="required"/>
+        <input class="form-control" id="enProjectName" name="enProjectName" type="text" pattern="[A-Za-z\s]" required="required"/>
       </div>
       <div class="form-group">
         <label for="frProjectName" class="required">{{ site.NameFR[page.lang] }} <strong class="required">({{ site.MandatoryField[page.lang] }})</strong></label>
-        <input class="form-control" id="frProjectName" name="frProjectName" type="text" pattern="[A-Za-z\s]" data-rule-lettersonly="true" required="required"/>
+        <input class="form-control" id="frProjectName" name="frProjectName" type="text" pattern="[A-Za-z\s]" required="required"/>
       </div>
 
     <h2>{{ site.TagsDesc[page.lang] }}</h2>
       <div id="tags">
-        <div id="tagsEN" class="form-group"></div>
-        <div id="tagsFR" class="form-group"></div>
+        <div id="tagsEN" class="form-group">
+          <div>
+            <div class="control-group input-group col-xs-2" style="margin-top:10px" >
+              <input type="text" id="tagEN" name="tagEN" class="form-control" required="required">
+            </div>
+           </div>
+        </div>
+        <div id="tagsFR" class="form-group">
+          <div>
+            <div class="control-group input-group col-xs-2" style="margin-top:10px" >
+              <input type="text" id="tagFR" name="tagFR" class="form-control" required="required">
+            </div>
+           </div>
+        </div>
       </div>
 
     <h2>{{ site.AdminCodeDesc[page.lang] }}</h2>
@@ -100,11 +112,7 @@
       </div>
       <div class="form-group">
         <label for="nameContact">{{ site.NameContact[page.lang] }}</label>
-        <input class="form-control" id="nameContact" name="nameContact" type="text" pattern="[A-Za-z\s]" data-rule-lettersonly="true" />
-      </div>
-          <div class="form-group">
-        <label for="phoneContact">{{ site.ContactPhone[page.lang] }}</label>
-        <input class="form-control" id="phoneContact" name="phoneContact" type="tel" data-rule-phoneUS="true" />
+        <input class="form-control" id="nameContact" name="nameContact" type="text" pattern="[A-Za-z\s]" />
       </div>
 
     <h2>{{ site.DateDesc[page.lang] }}</h2>
@@ -113,8 +121,28 @@
         <input class="form-control" id="dateCreated" name="dateCreated" type="date" data-rule-dateISO="true" required="required" />
       </div>
       <div class="form-group">
-        <label for="dateLastUpdated" class="required">{{ site.LastUpdated[page.lang] }} <strong class="required">({{ site.MandatoryField[page.lang] }})</strong><span class="datepicker-format"> (YYYY-MM-DD)</span></label>
-        <input class="form-control" id="dateLastUpdated" name="dateLastUpdated" type="date" data-rule-dateISO="true" required="required"/>
+        <label for="dateMetadaLastUpdated" class="required">{{ site.LastUpdated[page.lang] }} <strong class="required">({{ site.MandatoryField[page.lang] }})</strong><span class="datepicker-format"> (YYYY-MM-DD)</span></label>
+        <input class="form-control" id="dateMetadaLastUpdated" name="dateMetadaLastUpdated" type="date" data-rule-dateISO="true" required="required"/>
+      </div>
+
+    <h2>{{ site.DescriptionUsesOss[page.lang] }}</h2>
+      <div class="form-group">
+        <label for="useDescriptionEN" class="required">{{ site.DescriptionUsesOssDescEN[page.lang] }} <strong class="required">({{ site.MandatoryField[page.lang] }})</strong></label>
+        <input class="form-control" id="useDescriptionEN" name="useDescriptionEN" type="text" pattern="[A-Za-z\s]" required="required"/>
+      </div>
+      <div class="form-group">
+        <label for="useDescriptionFR" class="required">{{ site.DescriptionUsesOssDescFR[page.lang] }} <strong class="required">({{ site.MandatoryField[page.lang] }})</strong></label>
+        <input class="form-control" id="useDescriptionFR" name="useDescriptionFR" type="text" pattern="[A-Za-z\s]" required="required"/>
+      </div>
+
+    <h2>{{ site.NameUsesOss[page.lang] }}</h2>
+      <div class="form-group">
+        <label for="enUseName" class="required">{{ site.NameUsesOssDescEN[page.lang] }} <strong class="required">({{ site.MandatoryField[page.lang] }})</strong></label>
+        <input class="form-control" id="enUseName" name="enUseName" type="text" pattern="[A-Za-z\s]" required="required"/>
+      </div>
+      <div class="form-group">
+        <label for="frUseName" class="required">{{ site.NameUsesOssDescFR[page.lang] }} <strong class="required">({{ site.MandatoryField[page.lang] }})</strong></label>
+        <input class="form-control" id="frUseName" name="frUseName" type="text" pattern="[A-Za-z\s]" required="required"/>
       </div>
 
     <h2>{{ site.RelatedDesc[page.lang] }}</h2>
@@ -128,11 +156,11 @@
       </div>
       <div class="form-group">
         <label for="enNameRelated">{{ site.NameRelatedEN[page.lang] }}</label>
-        <input class="form-control" id="enNameRelated" name="enNameRelated" type="text" pattern="[A-Za-z\s]" data-rule-lettersonly="true"/>
+        <input class="form-control" id="enNameRelated" name="enNameRelated" type="text" pattern="[A-Za-z\s]"/>
       </div>
       <div class="form-group">
         <label for="frNameRelated">{{ site.NameRelatedFR[page.lang] }}</label>
-        <input class="form-control" id="frNameRelated" name="enNameRelated" type="text" pattern="[A-Za-z\s]" data-rule-lettersonly="true"/>
+        <input class="form-control" id="frNameRelated" name="enNameRelated" type="text" pattern="[A-Za-z\s]"/>
       </div>
 
     <h2>{{ site.StatusDesc[page.lang] }}</h2>
@@ -146,6 +174,13 @@
           <option value="Deprecated">{{ site.DeprecatedStatus[page.lang] }}</option>
           <option value="Retired">{{ site.RetiredStatus[page.lang] }}</option>
         </select>
+      </div>
+
+    <!-- TODO add the user selection as an array -->
+    <h2>{{ site.Users[page.lang] }}</h2>
+      <div class="form-group">
+        <label for="users" class="required">{{ site.UsersDesc[page.lang] }}</label>
+        <input class="form-control" id="users" name="users" type="text" pattern="[A-Za-z\s]" />
       </div>
 
     <h2>{{ site.InformationAboutSubmitter[page.lang] }}</h2>
