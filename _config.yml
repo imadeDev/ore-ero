@@ -473,6 +473,42 @@ StandardOrgDesc:
 StatusDesc:
   en: The status of the standard
   fr: le status de la norme
+ReferencesURL:
+  en: Reference
+  fr: Référence
+ReferencesURLEN:
+  en: Reference URL in english
+  fr: URL de référence anglais
+ReferencesURLFR:
+  en: Reference URL in french
+  fr: URL de référence en français
+ReferencesNameEN:
+  en: Reference name in english
+  fr: Nom de référence en anglais
+ReferencesNameFR:
+  en: Reference name in french
+  fr: Nom de référence en français
+statusValue:
+  en: Status of the standard
+  fr: Status de la norme
+specURL:
+  en: Specification URL
+  fr: URL de la spécification
+specURLEN:
+  en: Specification URL in english
+  fr: URL de la spécification en anglais
+specURLFR:
+  en: Specification URL in french
+  fr: URL de la spécification en français
+StandardCodeValue:
+  en: Code standard value
+  fr: Code de la norme
+StandardsOrg:
+  en: Organization standard's name
+  fr: Nom de l'organisation de la norme
+standardsOrgValue:
+  en: Organization standard name value
+  fr: Nom de l'organisation de la norme
 
 # Other translations
 AddMoreTags:
