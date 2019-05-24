@@ -194,6 +194,179 @@ ${[...document.querySelectorAll('#tagsFR input')]
     });
 }
 
+function submitFormStandards() {
+  let submitButton = document.getElementById('prbotSubmitStandards');
+  let resetButton = document.getElementById('codeFormReset');
+  submitButton.disabled = true;
+  resetButton.disabled = true;
+  let content =
+    '' +
+    `administrations:
+  -
+    adminCode: ${$('#adminCode').val()}
+    contact:
+      email: ${$('#emailContact').val()}
+    references:
+      -
+        URL:
+          en: ${$('#enReferencesURL').val()}
+          fr: ${$('#frReferencesURL').val()}
+        name:
+          en: ${$('#enReferencesName').val()}
+          fr: ${$('#frReferencesName').val()}
+    status: ${$('#status').val()}`;
+    let header = `---
+date:
+  created: ${$('#dateCreated').val()}
+  metadataLastUpdated: ${$('#dateLastUpdated').val()}
+description:
+  en: ${$('#enDescription').val()}
+  fr: ${$('#frDescription').val()}
+name:
+  en: ${$('#enProjectName').val()}
+  fr: ${$('#frProjectName').val()}
+specURL:
+  en: ${$('#enSpecURL').val()}
+  fr: ${$('#frSpecURL').val()}
+standardCode: ${$('#standardCode').val()}
+standardsOrgs: ${$('#standardsOrg').val()}
+tags:
+  en:
+${[...document.querySelectorAll('#tagsEN input')]
+  .map(child => child.value)
+  .map(tag => '    - "' + tag + '"')
+  .join('\n')}
+  fr:
+${[...document.querySelectorAll('#tagsFR input')]
+  .map(child => child.value)
+  .map(tag => '    - "' + tag + '"')
+  .join('\n')}
+`;
+  let fileWriter = new YamlWriter(USERNAME, REPO_NAME);
+  let file = `_data/code/${getSelectedOrgType()}/${$('#adminCode').val()}.yml`;
+  fileWriter
+    .merge(file, content, 'administrations', 'name.en')
+    .then(result => {
+      const config = {
+        body: JSON.stringify({
+          user: USERNAME,
+          repo: REPO_NAME,
+          title: 'Updated code for ' + $('#adminCode :selected').text(),
+          description:
+            'Authored by: ' +
+            $('#submitterEmail').val() +
+            '\n' +
+            'Project: ***' +
+            $('#enProjectName').val() +
+            '***\n' +
+            $('#enDescription').val() +
+            '\n',
+          commit: 'Committed by ' + $('#submitterEmail').val(),
+          author: {
+            name: $('#submitterUsername').val(),
+            email: $('#submitterEmail').val()
+          },
+          files: [
+            {
+              path: file,
+              content: YAML.stringify(result, { keepBlobsInJSON: false })
+            }
+          ]
+        }),
+        method: 'POST'
+      };
+      return fetch(PRBOT_URL, config);
+    })
+    .catch(err => {
+      if (err.status == 404) {
+        // We need to create the file for this organization, as it doesn't yet exist.
+        let header = `---
+date:
+  created: ${$('#dateCreated').val()}
+  metadataLastUpdated: ${$('#dateLastUpdated').val()}
+description:
+  en: ${$('#enDescription').val()}
+  fr: ${$('#frDescription').val()}
+name:
+  en: ${$('#enProjectName').val()}
+  fr: ${$('#frProjectName').val()}
+specURL:
+  en: ${$('#enSpecURL').val()}
+  fr: ${$('#frSpecURL').val()}
+standardCode: ${$('#standardCode').val()}
+standardsOrgs: ${$('#standardsOrg').val()}
+tags:
+  en:
+${[...document.querySelectorAll('#tagsEN input')]
+  .map(child => child.value)
+  .map(tag => '    - "' + tag + '"')
+  .join('\n')}
+  fr:
+${[...document.querySelectorAll('#tagsFR input')]
+  .map(child => child.value)
+  .map(tag => '    - "' + tag + '"')
+  .join('\n')}
+`;
+        const config = {
+          body: JSON.stringify({
+            user: USERNAME,
+            repo: REPO_NAME,
+            title: 'Created code file for ' + $('#adminCode :selected').text(),
+            description:
+              'Authored by: ' +
+              $('#submitterEmail').val() +
+              '\n' +
+              'Project: ***' +
+              $('#enProjectName').val() +
+              '***\n' +
+              $('#enDescription').val() +
+              '\n',
+            commit: 'Committed by ' + $('#submitterEmail').val(),
+            author: {
+              name: $('#submitterUsername').val(),
+              email: $('#submitterEmail').val()
+            },
+            files: [
+              {
+                path: file,
+                content: header + content
+              }
+            ]
+          }),
+          method: 'POST'
+        };
+        return fetch(PRBOT_URL, config);
+      } else {
+        throw err;
+      }
+    })
+    .then(response => {
+      if (response.status != 200) {
+        toggleAlert(ALERT_OFF);
+        toggleAlert(ALERT_FAIL);
+        submitButton.disabled = false;
+        resetButton.disabled = false;
+      } else {
+        toggleAlert(ALERT_OFF);
+        toggleAlert(ALERT_SUCCESS);
+        // Redirect to home page
+        setTimeout(function() {
+          window.location.href = './index.html';
+        }, 2000);
+      }
+    });
+}
+
+$('#prbotSubmitStandards').click(function() {
+  // Progress only when form input is valid
+  if (validateRequired()) {
+    toggleAlert(ALERT_OFF);
+    toggleAlert(ALERT_IN_PROGRESS);
+    window.scrollTo(0, document.body.scrollHeight);
+    submitFormStandards();
+  }
+});
+
 $('#prbotSubmit').click(function() {
   // Progress only when form input is valid
   if (validateRequired()) {
