@@ -215,33 +215,6 @@ function submitFormStandards() {
           en: ${$('#enReferencesName').val()}
           fr: ${$('#frReferencesName').val()}
     status: ${$('#status').val()}`;
-    let header = `---
-date:
-  created: ${$('#dateCreated').val()}
-  metadataLastUpdated: ${$('#dateLastUpdated').val()}
-description:
-  en: ${$('#enDescription').val()}
-  fr: ${$('#frDescription').val()}
-name:
-  en: ${$('#enProjectName').val()}
-  fr: ${$('#frProjectName').val()}
-specURL:
-  en: ${$('#enSpecURL').val()}
-  fr: ${$('#frSpecURL').val()}
-standardCode: ${$('#standardCode').val()}
-standardsOrgs: ${$('#standardsOrg').val()}
-tags:
-  en:
-${[...document.querySelectorAll('#tagsEN input')]
-  .map(child => child.value)
-  .map(tag => '    - "' + tag + '"')
-  .join('\n')}
-  fr:
-${[...document.querySelectorAll('#tagsFR input')]
-  .map(child => child.value)
-  .map(tag => '    - "' + tag + '"')
-  .join('\n')}
-`;
   let fileWriter = new YamlWriter(USERNAME, REPO_NAME);
   let file = `_data/code/${getSelectedOrgType()}/${$('#adminCode').val()}.yml`;
   fileWriter
