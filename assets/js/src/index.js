@@ -202,6 +202,7 @@ function submitFormAdmin() {
   let content =
     '' +
     `
+
 - code: ${$('#adminCode').val()}
   provinceCode: "${$('#provinceCode').val()}"
   name:
@@ -211,7 +212,7 @@ function submitFormAdmin() {
   let fileWriter = new YamlWriter(USERNAME, REPO_NAME);
   let file = `_data/administrations/municipal.yml`;
   fileWriter
-    .merge(file, content, 'code', 'name.en')
+    .append(file, content)
     .then(result => {
       const config = {
         body: JSON.stringify({
@@ -240,8 +241,8 @@ function submitFormAdmin() {
       if (response.status != 200) {
         toggleAlert(ALERT_OFF);
         toggleAlert(ALERT_FAIL);
-        submitButton.disabled = false;
-        resetButton.disabled = false;
+        submitButtonAdmin.disabled = false;
+        resetButtonAdmin.disabled = false;
       } else {
         toggleAlert(ALERT_OFF);
         toggleAlert(ALERT_SUCCESS);
