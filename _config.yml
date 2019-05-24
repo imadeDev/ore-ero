@@ -428,7 +428,7 @@ FormSubmissionSuccess:
   en: Form was submitted!
   fr: Le formulaire a été soumis!
 
-# Open Soruce Software (Schema and Form)
+# Open Source Software (Schema and Form)
 SchemaVersionOssDesc:
   en: The version of the ORE metadata schema for open source software.
   fr: La version du schéma de métadonnées ORE pour les logiciels libres.
@@ -444,6 +444,36 @@ NameUsesOssDesc:
 DescriptionUsesOssDesc:
   en: A one or two sentence description of the project activity.
   fr: Une description du domaine de l'activité du projet.
+
+# Open standards
+SpecURL:
+  en: Specification URL
+  fr: URL de spécification
+SpecURLDesc:
+  en: The specification URL for the standard
+  fr: l'url de spécification pour la norme
+SpecURLEN:
+  en: The english specification URL
+  fr: L'url de spécification anglais
+SpecURLFR:
+  en: The french specification URL
+  fr: L'url de spécification français
+StandardCode:
+  en: Standard Code
+  fr: Code de la norme
+StandardCodeDesc:
+  en: The standard's code
+  fr: Le code de la norme
+StandardOrg:
+  en: Standard Organization
+  fr: Organisation de la norme
+StandardOrgDesc:
+  en: The standard organization
+  fr: L'organisation de la norme
+StatusDesc:
+  en: The status of the standard
+  fr: le status de la norme
+
 
 # Other translations
 AddMoreTags:
