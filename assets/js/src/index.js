@@ -214,11 +214,11 @@ admininstrations:
           email: ${$('#emailContact').val()}
           name: ${$('#nameContact').val()}
         date:
-          started: ${$('#dateCreated').val()}
-          metadataLastUpdated: ${$('#dateMetadaLastUpdated').val()}
+          started: "${$('#dateCreated').val()}"
+          metadataLastUpdated: "${$('#dateMetadaLastUpdated').val()}"
         description:
-          en: ${$('useDescriptionEN').val()}
-          fr: ${$('useDescriptionFR').val()}
+          en: ${$('#useDescriptionEN').val()}
+          fr: ${$('#useDescriptionFR').val()}
         name:
           en: ${$('#enUseName').val()}
           fr: ${$('#frUseName').val()}
@@ -235,12 +235,17 @@ admininstrations:
 `;
   // TODO: users needs to be treaded as an array
   let fileWriter = new YamlWriter(USERNAME, REPO_NAME);
-  let file = `_data/logiciels_libres-open_source_software/${$(
-    '#enProjectName'
-  ).val()}.yml`;
+  let file = `_data/logiciels_libres-open_source_software/${$('#enProjectName')
+    .val()
+    .toLowerCase()}.yml`;
+  console.log('Submitter username : ' + $('#submitterUsername').val());
+  console.log('Submitter email : ' + $('#submitterEmail').val());
   fileWriter
     .merge(file, content, 'admininstrations', 'adminCode')
     .then(result => {
+      console.log(result);
+      console.log(file);
+      console.log('test: ' + $('#submitterEmail').val());
       const config = {
         body: JSON.stringify({
           user: USERNAME,
@@ -255,10 +260,10 @@ admininstrations:
             '***\n' +
             $('#enDescription').val() +
             '\n',
-          commit: 'Commited by ' + $('submitterEmail').val(),
+          commit: 'Commited by ' + $('#submitterEmail').val(),
           author: {
-            name: $('submitterUsername').val(),
-            email: $('submitterEmail').val()
+            name: $('#submitterUsername').val(),
+            email: $('#submitterEmail').val()
           },
           files: [
             {
@@ -269,13 +274,16 @@ admininstrations:
         }),
         method: 'POST'
       };
+      console.log(config);
       return fetch(PRBOT_URL, config);
     })
     .catch(err => {
+      console.log('ERROR');
+      console.log(err);
       if (err.status == 404) {
         // We need to create the file for this project, as it doesn't yet exists.
         let header = `---
-schemaVersion: ${$('#schemaVersion').val()}
+schemaVersion: "${$('#schemaVersion').val()}"
 description:
   en: ${$('#enDescription').val()}
   fr: ${$('#frDescription').val()}
@@ -302,6 +310,8 @@ ${[...document.querySelectorAll('#tagsFR input')]
   .map(child => child.value)
   .map(tag => '    - "' + tag + '"')
   .join('\n')}`;
+        console.log(header + content);
+        console.log('new new');
         const config = {
           body: JSON.stringify({
             user: USERNAME,
@@ -324,7 +334,9 @@ ${[...document.querySelectorAll('#tagsFR input')]
             files: [
               {
                 path: file,
-                content: header + content
+                content: YAML.stringify(header + content, {
+                  keepBlobsInJSON: false
+                })
               }
             ]
           }),
@@ -332,10 +344,12 @@ ${[...document.querySelectorAll('#tagsFR input')]
         };
         return fetch(PRBOT_URL, config);
       } else {
+        console.log('test test test');
         throw err;
       }
     })
     .then(response => {
+      console.log(response);
       if (response.status != 200) {
         toggleAlert(ALERT_OFF);
         toggleAlert(ALERT_FAIL);
@@ -345,9 +359,9 @@ ${[...document.querySelectorAll('#tagsFR input')]
         toggleAlert(ALERT_OFF);
         toggleAlert(ALERT_SUCCESS);
         // Redirect to home page
-        setTimeout(function() {
+        /*setTimeout(function() {
           window.location.href = './index.html';
-        }, 2000);
+        }, 2000);*/
       }
     });
 }

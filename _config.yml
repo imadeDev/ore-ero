@@ -8,9 +8,9 @@
 # Site settings
 baseurl: "/ore-ero" # the subpath of your site, e.g. /blog
 url: "https://canada-ca.github.io/ore-ero" # the base hostname & protocol for your site
-github_username: canada-ca
+github_username: fredericlestage-vdm
 github_repository: ore-ero
-prbot_url: "https://canada-pr-bot.herokuapp.com/"
+prbot_url: "http://localhost:3000/"
 
 wet_cdts_hosturl: "https://www.canada.ca/etc/designs/canada/cdts/gcweb"
 wet_cdts_version: "v4_0_30"
@@ -89,7 +89,7 @@ Organization:
 License:
   en: License
   fr: Licence
-Tag: 
+Tag:
   en: Tag
   fr: Étiquette
 Filter:
@@ -218,14 +218,14 @@ DescriptionFR:
   fr: Description en francais
 
 DownloadName:
-  en: Download URL 
-  fr: URL de téléchargement 
+  en: Download URL
+  fr: URL de téléchargement
 DownloadURLCodeDesc:
   en: The english and french URLs where a distribution of the project can be found.
   fr: Les URLs en francais et en anglais où une distribution du projet peut être trouvée.
 DownloadURLCodeEN:
   en: English download URL
-  fr: URL de téléchargement en anglais 
+  fr: URL de téléchargement en anglais
 DownloadURLCodeFR:
   en: French download URL
   fr: URL de téléchargement en francais
@@ -331,8 +331,8 @@ URLLicensesDescFR:
   fr: URL de la licence en francais
 
 SpdxIDLicencesName:
-  en: SPDX License identifier 
-  fr: Identifiant de licence SPDX 
+  en: SPDX License identifier
+  fr: Identifiant de licence SPDX
 SpdxIDLicencesDesc:
   en: The SPDX Licence identifier - See <a href="https://spdx.org/licenses/">List of licences</a>.
   fr: L'identifiant de licence SPDX - Consultez la <a href="https://spdx.org/licenses/">Liste des licences</a>.
@@ -408,7 +408,7 @@ VcsCodeDesc:
   fr: Une chaîne de caractères en miniscule contenant le nom de la version du système de contrôle qui est utilisée dans le projet. Par exemple, git, svn, ..
 
 VersionName:
-  en: The latest version 
+  en: The latest version
   fr: La dernière version
 VersionCodeDesc:
   en: The latest version for this project. For example, 1.0.0.
@@ -417,7 +417,7 @@ VersionCodeDesc:
 InformationAboutSubmitter:
   en: Information about submitter
   fr: Des informations sur le déposant
-  
+
 FormSubmissionInProgress:
   en: The form is being submitted...
   fr: Le formulaire est en cours de soumission...
