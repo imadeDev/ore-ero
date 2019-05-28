@@ -202,17 +202,17 @@ function submitFormAdmin() {
   let content =
     '' +
     `
-
 - code: ${$('#adminCode').val()}
-  provinceCode: "${$('#provinceCode').val()}"
+  provinceCode: ${$('#provinceCode').val()}
   name:
     en: ${$('#enAdminName').val()}
     fr: ${$('#frAdminName').val()}
 `;
   let fileWriter = new YamlWriter(USERNAME, REPO_NAME);
   let file = `_data/administrations/municipal.yml`;
+  console.log(content);
   fileWriter
-    .append(file, content)
+    .merge(file, content, '- code', 'name.en')
     .then(result => {
       const config = {
         body: JSON.stringify({
@@ -236,6 +236,35 @@ function submitFormAdmin() {
         method: 'POST'
       };
       return fetch(PRBOT_URL, config);
+    })
+    .catch(err => {
+      if (err.status == 404) {
+        // We need to create the file for this organization, as it doesn't yet exist.
+        const config = {
+          body: JSON.stringify({
+            user: USERNAME,
+            repo: REPO_NAME,
+            title: 'Updated code for administrations ',
+            description:
+              'Authored by: ' + $('#submitterEmail').val() + '\n',
+            commit: 'Commited by ' + $('submitterEmail').val(),
+            author: {
+              name: $('submitterUsername').val(),
+              email: $('submitterEmail').val()
+            },
+            files: [
+              {
+                path: file,
+                content: content
+              }
+            ]
+          }),
+          method: 'POST'
+        };
+        return fetch(PRBOT_URL, config);
+      } else {
+        throw err;
+      }
     })
     .then(response => {
       if (response.status != 200) {
