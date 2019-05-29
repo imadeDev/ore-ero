@@ -200,8 +200,9 @@ function submitFormAdmin() {
   submitButtonAdmin.disabled = true;
   resetButtonAdmin.disabled = true;
   let content =
-    '' +
-    `
+      '' +
+      `
+
 - code: ${$('#adminCode').val()}
   provinceCode: ${$('#provinceCode').val()}
   name:
@@ -212,7 +213,7 @@ function submitFormAdmin() {
   let file = `_data/administrations/municipal.yml`;
   console.log(content);
   fileWriter
-    .merge(file, content, '- code', 'name.en')
+    .merge(file, content, '', 'code')
     .then(result => {
       const config = {
         body: JSON.stringify({
@@ -221,10 +222,10 @@ function submitFormAdmin() {
           title: 'Updated code for administrations ',
           description:
             'Authored by: ' + $('#submitterEmail').val() + '\n',
-          commit: 'Commited by ' + $('submitterEmail').val(),
+          commit: 'Commited by ' + $('#submitterEmail').val(),
           author: {
-            name: $('submitterUsername').val(),
-            email: $('submitterEmail').val()
+            name: $('#submitterUsername').val(),
+            email: $('#submitterEmail').val()
           },
           files: [
             {
@@ -247,10 +248,10 @@ function submitFormAdmin() {
             title: 'Updated code for administrations ',
             description:
               'Authored by: ' + $('#submitterEmail').val() + '\n',
-            commit: 'Commited by ' + $('submitterEmail').val(),
+            commit: 'Commited by ' + $('#submitterEmail').val(),
             author: {
-              name: $('submitterUsername').val(),
-              email: $('submitterEmail').val()
+              name: $('#submitterUsername').val(),
+              email: $('#submitterEmail').val()
             },
             files: [
               {

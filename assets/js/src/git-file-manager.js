@@ -82,8 +82,9 @@ class YamlWriter extends FileWriter {
    */
   merge(file, contents, propPath, onValue) {
     let newObjectFile = YAML.parse(contents);
+    console.log(newObjectFile);
     let newObjects = DeepObject.get(newObjectFile, propPath);
-
+    console.log(newObjects);
     // Get an Object of the new ids using the onValue
     let newIds = {};
     for (let newItem of newObjects) {
