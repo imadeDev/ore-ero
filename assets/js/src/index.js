@@ -208,6 +208,19 @@ function getCodeObject() {
   return codeObject;
 }
 
+function getAdminObject() {
+  // Required fields are included first.
+  let adminObject = {
+    adminCode: $('#adminCode').val(),
+    provinceCode: $('#provinceCode').val(),
+    adminName: {
+      en: $('#enAdminName').val(),
+      fr: $('#frAdminName').val()
+    }
+  };
+  return adminObject;
+}
+
 /**
  * Validates the required fields in the codeForm
  * WET uses the JQuery plugin (https://jqueryvalidation.org/) for their form validation
@@ -360,21 +373,12 @@ function submitFormAdmin() {
   let resetButtonAdmin = document.getElementById('adminFormReset');
   submitButtonAdmin.disabled = true;
   resetButtonAdmin.disabled = true;
-  let content =
-      '' +
-      `
-
-- code: ${$('#adminCode').val()}
-  provinceCode: ${$('#provinceCode').val()}
-  name:
-    en: ${$('#enAdminName').val()}
-    fr: ${$('#frAdminName').val()}
-`;
+  let adminObject = getAdminObject();
   let fileWriter = new YamlWriter(USERNAME, REPO_NAME);
   let file = `_data/administrations/municipal.yml`;
-  console.log(content);
+  console.log(adminObject);
   fileWriter
-    .merge(file, content, '', 'code')
+    .merge(file, adminObject, '', 'code')
     .then(result => {
       const config = {
         body: JSON.stringify({
@@ -391,7 +395,7 @@ function submitFormAdmin() {
           files: [
             {
               path: file,
-              content: YAML.stringify(result, {keepBlobsInJSON: false})
+              content: jsyaml.dump(result, { schema: jsyaml.JSON_SCHEMA })
             }
           ]
         }),
@@ -417,7 +421,7 @@ function submitFormAdmin() {
             files: [
               {
                 path: file,
-                content: content
+                content: JSON.stringify(adminObject)
               }
             ]
           }),
