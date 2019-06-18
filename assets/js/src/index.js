@@ -266,12 +266,8 @@ function getOssObject() {
               email: $('#emailContact').val()
             },
             date: {
-              started: $('#dateStarted')
-                .val()
-                .toString(),
-              metadataLastUpdated: $('#dateLastUpdated')
-                .val()
-                .toString()
+              started: $('#dateStarted').val(),
+              metadataLastUpdated: $('#dateLastUpdated').val()
             },
             description: {
               en: $('#enUseDescription').val(),
