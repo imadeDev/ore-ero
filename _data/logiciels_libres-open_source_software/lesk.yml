@@ -17,9 +17,7 @@ licenses:
       en: "http://lesk.it/license.html"
       fr: "http://lesk.it/license.html"
     spdxID: "Apache-2.0"
-name:
-  en: LESK
-  fr: LESK
+nsoftwareName: LESK
 tags:
   en:
     - "HTTP Server"

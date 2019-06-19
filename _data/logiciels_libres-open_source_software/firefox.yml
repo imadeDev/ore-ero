@@ -12,9 +12,7 @@ licenses:
       en: "https://www.mozilla.org/en-US/MPL/2.0/FAQ/"
       fr: "https://www.mozilla.org/en-US/MPL/2.0/FAQ/"
     spdxID: "MPL-2.0"
-name:
-  en: Firefox
-  fr: Firefox
+softwareName: Firefox
 tags:
   en:
     - "Web browser"

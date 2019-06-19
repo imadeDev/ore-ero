@@ -12,9 +12,7 @@ licenses:
       en: "https://github.com/qgis/QGIS/blob/master/COPYING"
       fr: "https://github.com/qgis/QGIS/blob/master/COPYING"
     spdxID: "GPL-2.0"
-name:
-  en: QGIS
-  fr: QGIS
+softwareName: QGIS
 tags:
   en:
     - "gis"

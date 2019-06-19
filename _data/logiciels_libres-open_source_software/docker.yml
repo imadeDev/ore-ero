@@ -12,9 +12,7 @@ licenses:
       en: "https://www.docker.com/legal/components-licenses"
       fr: "https://www.docker.com/legal/components-licenses"
     spdxID: "Apache-2.0"
-name:
-  en: "Docker"
-  fr: "Docker"
+softwareName: "Docker"
 tags:
   en:
     - "Container platform"

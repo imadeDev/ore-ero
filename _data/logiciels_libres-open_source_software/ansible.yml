@@ -12,9 +12,7 @@ licenses:
       en: "https://github.com/ansible/ansible/blob/devel/COPYING"
       fr: "https://github.com/ansible/ansible/blob/devel/COPYING"
     spdxID: "GPL-3.0"
-name:
-  en: Ansible
-  fr: Ansible
+softwareName: Ansible
 tags:
   en:
     - "Application platform"

@@ -12,9 +12,7 @@ licenses:
       en: "https://github.com/angular/angular/blob/master/LICENSE"
       fr: "https://github.com/angular/angular/blob/master/LICENSE"
     spdxID: "MIT"
-name:
-  en: Angular
-  fr: Angular
+softwareName: Angular
 tags:
   en:
     - "software framework"

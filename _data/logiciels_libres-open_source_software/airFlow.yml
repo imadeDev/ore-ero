@@ -12,9 +12,7 @@ licenses:
       en: "https://github.com/apache/airflow/blob/master/LICENSE"
       fr: "https://github.com/apache/airflow/blob/master/LICENSE"
     spdxID: "Apache-2.0"
-name:
-  en: AirFlow
-  fr: AirFlow
+softwareName: AirFlow
 tags:
   en:
     - "Data integration"

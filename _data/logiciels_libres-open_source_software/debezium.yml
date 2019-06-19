@@ -12,9 +12,7 @@ licenses:
       en: "https://github.com/debezium/debezium/blob/master/LICENSE.txt"
       fr: "https://github.com/debezium/debezium/blob/master/LICENSE.txt"
     spdxID: "Apache-2.0"
-name:
-  en: Debezium
-  fr: Debezium
+softwareName: Debezium
 tags:
   en:
     - "Incremental management of data"

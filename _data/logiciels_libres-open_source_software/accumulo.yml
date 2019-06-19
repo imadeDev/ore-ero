@@ -12,9 +12,7 @@ licenses:
       en: "https://github.com/apache/accumulo/blob/master/LICENSE"
       fr: "https://github.com/apache/accumulo/blob/master/LICENSE"
     spdxID: "Apache-2.0"
-name:
-  en: Accumulo
-  fr: Accumulo
+softwareName: Accumulo
 tags:
   en:
     - "Application"

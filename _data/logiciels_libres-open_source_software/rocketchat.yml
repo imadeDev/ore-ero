@@ -12,9 +12,7 @@ licenses:
       en: "https://github.com/RocketChat/Rocket.Chat.Hubot/blob/master/LICENSE"
       fr: "https://github.com/RocketChat/Rocket.Chat.Hubot/blob/master/LICENSE"
     spdxID: "MIT"
-name:
-  en: "Rocket.Chat"
-  fr: "Rocket.Chat"
+softwareName: "Rocketchat"
 tags:
   en:
     - "Instant messaging"

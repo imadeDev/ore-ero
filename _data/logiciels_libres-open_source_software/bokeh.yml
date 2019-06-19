@@ -12,9 +12,7 @@ licenses:
       en: "https://github.com/bokeh/bokeh/blob/master/LICENSE.txt"
       fr: "https://github.com/bokeh/bokeh/blob/master/LICENSE.txt"
     spdxID: "BSD 3-Clause"
-name:
-  en: Bokeh
-  fr: Bokeh
+softwareName: Bokeh
 tags:
   en:
     - "Visualisation"

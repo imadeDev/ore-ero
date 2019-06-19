@@ -12,9 +12,7 @@ licenses:
       en: "https://github.com/jekyll/jekyll/blob/master/LICENSE"
       fr: "https://github.com/jekyll/jekyll/blob/master/LICENSE"
     spdxID: "MIT"
-name:
-  en: Jekyll
-  fr: Jekyll
+softwareName: Jekyll
 tags:
   en:
     - "Web site"

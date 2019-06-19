@@ -12,9 +12,7 @@ licenses:
       en: "https://github.com/apache/cassandra/blob/trunk/LICENSE.txt"
       fr: "https://github.com/apache/cassandra/blob/trunk/LICENSE.txt"
     spdxID: "Apache-2.0"
-name:
-  en: Cassandra
-  fr: Cassandra
+softwareName: Cassandra
 tags:
   en:
     - "Data base"

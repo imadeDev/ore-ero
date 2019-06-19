@@ -12,9 +12,7 @@ licenses:
       en: "https://php.net/license/index.php"
       fr: "https://php.net/license/index.php"
     spdxID: "PHP-License"
-name:
-  en: "PHP"
-  fr: "PHP"
+softwareName: "PHP"
 tags:
   en:
     - "Programming language"

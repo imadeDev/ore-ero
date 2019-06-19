@@ -12,9 +12,7 @@ licenses:
       en: "https://www.drupal.org/about/licensing#drupal-license"
       fr: "https://www.drupal.org/about/licensing#drupal-license"
     spdxID: "GPL-2.0"
-name:
-  en: Drupal
-  fr: Drupal
+softwareName: Drupal
 tags:
   en:
     - "Web site"

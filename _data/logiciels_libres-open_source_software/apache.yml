@@ -12,9 +12,7 @@ licenses:
       en: "https://www.apache.org/licenses/LICENSE-2.0.txt"
       fr: "https://www.apache.org/licenses/LICENSE-2.0.txt"
     spdxID: "Apache-2.0"
-name:
-  en: Apache
-  fr: Apache
+softwareName: Apache
 tags:
   en:
     - "HTTP Server"

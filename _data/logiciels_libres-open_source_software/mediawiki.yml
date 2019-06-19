@@ -12,9 +12,7 @@ licenses:
       en: "https://www.mediawiki.org/wiki/Topic:Tg9b5hes4ue3vdix"
       fr: "https://www.mediawiki.org/wiki/Topic:Tg9b5hes4ue3vdix"
     spdxID: "GPL-2.0"
-name:
-  en: MediaWiki
-  fr: MediaWiki
+softwareName: MediaWiki
 tags:
   en:
     - "Wiki"
