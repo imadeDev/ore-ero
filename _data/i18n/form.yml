@@ -414,17 +414,13 @@ oss:
       fr:
         en: French homepage URL
         fr: URL de la page d'accueil en francais
-  ProjectName:
+  softwareName:
     title:
-      en: The English and French name of the project.
-      fr: Le nom du projet en français et en anglais.
+      en: The  name of the open software.
+      fr: Le nom du logiciel libre.
     label:
-      en:
-        en: English project name
-        fr: Nom du projet en anglais
-      fr:
-        en: French project name
-        fr: Nom du projet en français
+      en: Open software name
+      fr: Nom du logiciel libre
   RelatedCode:
     title:
       en: Information about each library, framework, API or other related software used in this project.

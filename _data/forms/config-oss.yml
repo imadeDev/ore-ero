@@ -9,8 +9,8 @@ formGroups:
     title: HomepageUrl
     type: url
   - preset: licenses
-  - widget: string-i18n
-    title: ProjectName
+  - widget: string
+    title: softwareName
     rule: alphanum-space
   - preset: tags
   - preset: adminCode
