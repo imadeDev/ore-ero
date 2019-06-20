@@ -12,9 +12,7 @@ licenses:
       en: str()
       fr: str()
     spdxID: str()
-name:
-  en: str()
-  fr: str()
+softwareName: str()
 tags:
   en:
     - str()
