@@ -73,7 +73,7 @@
       {% for logiciels in site.data.logiciels_libres-open_source_software %}
         {% assign oss = logiciels[1] %}
         <tr>
-          <td><a href="#{{ oss.name[page.lang] | slugify }}" aria-controls="{{ oss.name[page.lang] | slugify }}" class="overlay-lnk" role="button">{{ oss.name[page.lang] }}</a></td>
+          <td><a href="#{{ oss.softwareName | slugify }}" aria-controls="{{ oss.softwareName | slugify }}" class="overlay-lnk" role="button">{{ oss.softwareName }}</a></td>
           <td>{{ oss.description[page.lang] }}</td>
           <td>
             {% for license in oss.licenses %}
@@ -100,9 +100,9 @@
 {% for logiciels in site.data.logiciels_libres-open_source_software %}
   {% assign oss = logiciels[1] %}
 
-    <section id="{{ oss.name[page.lang] | slugify }}" class="wb-overlay modal-content overlay-def wb-popup-mid">
+    <section id="{{ oss.softwareName | slugify }}" class="wb-overlay modal-content overlay-def wb-popup-mid">
       <header class="modal-header">
-        <h2 class="modal-title">{{ oss.name[page.lang] }}</h2>
+        <h2 class="modal-title">{{ oss.softwareName }}</h2>
       </header>
       <div class="modal-body">
         <p><strong>{{ oss.description[page.lang] }}</strong></p>
