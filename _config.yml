@@ -264,10 +264,15 @@ LanguagesName:
 LanguagesCodeDesc:
   en: A list of the programming languages used in the project.
   fr: Une liste des langages de programmation utilisés dans la projet.
-
 ProjectName:
   en: Name
   fr: Nom
+SoftwareName:
+  en: Open software name
+  fr: Nom du logiciel libre
+SoftwareNameDesc:
+  en: The name of the open software.
+  fr: Le nom du logiciel libre.
 NameCodeDesc:
   en: The English and French name of the project.
   fr: Le nom du projet en français et en anglais.

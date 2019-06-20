@@ -416,7 +416,7 @@ oss:
         fr: URL de la page d'accueil en francais
   softwareName:
     title:
-      en: The  name of the open software.
+      en: The name of the open software.
       fr: Le nom du logiciel libre.
     label:
       en: Open software name
